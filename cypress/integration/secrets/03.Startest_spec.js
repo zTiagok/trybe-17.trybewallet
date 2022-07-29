@@ -1,5 +1,5 @@
 import Startest from "../../startest";
-import { CURRENCY_INPUT_TEST_ID, DESCRIPTION_INPUT_TEST_ID, METHOD_INPUT_TEST_ID, TAG_INPUT_TEST_ID, VALUE_INPUT_TEST_ID } from "../../utils/constants";
+import { CURRENCY_INPUT_TEST_ID, DESCRIPTION_INPUT_TEST_ID, METHOD_INPUT_TEST_ID, TAG_INPUT_TEST_ID, VALUE_INPUT_TEST_ID, methodOptions, tagOptions } from "../../utils/constants";
 
 describe('Requisito 3 Startest não avaliativo', () => {
   it('🌟 Startest - Desenvolva os testes automatizados do requisito 3', async () => {
