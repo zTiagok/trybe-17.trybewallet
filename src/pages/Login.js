@@ -49,36 +49,39 @@ class Login extends React.Component {
     }
 
     return (
-      <form id="login-form">
-        <input
-          type="email"
-          data-testid="email-input"
-          id="login-email"
-          placeholder="Email"
-          value={ stateEmail }
-          onChange={ this.inputHandler }
-        />
+      <>
+        <span id="login-message">Login</span>
+        <form id="login-form">
+          <input
+            type="email"
+            data-testid="email-input"
+            id="login-email"
+            placeholder="Email"
+            value={ stateEmail }
+            onChange={ this.inputHandler }
+          />
 
-        <input
-          type="password"
-          data-testid="password-input"
-          id="login-password"
-          placeholder="Senha"
-          minLength={ 6 }
-          value={ statePassword }
-          onChange={ this.inputHandler }
-        />
+          <input
+            type="password"
+            data-testid="password-input"
+            id="login-password"
+            placeholder="Senha"
+            minLength={ 6 }
+            value={ statePassword }
+            onChange={ this.inputHandler }
+          />
 
-        <button
-          type="submit"
-          id="login-submit"
-          form="login-form"
-          onClick={ this.loginHandler }
-          disabled={ btnDisabled }
-        >
-          Entrar
-        </button>
-      </form>
+          <button
+            type="submit"
+            id="login-submit"
+            form="login-form"
+            onClick={ this.loginHandler }
+            disabled={ btnDisabled }
+          >
+            Entrar
+          </button>
+        </form>
+      </>
 
     );
   }
