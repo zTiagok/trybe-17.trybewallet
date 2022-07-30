@@ -9,7 +9,9 @@ class Header extends Component {
     return (
       <header>
         <p data-testid="email-field" id="header-user">
-          { email }
+          { !email
+            ? 'Sua Conta'
+            : email }
         </p>
         <p data-testid="total-field" id="header-expenses"> 0 </p>
         <p data-testid="header-currency-field" id="header-currency"> BRL </p>
