@@ -1,5 +1,6 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import reduxThunk from 'redux-thunk';
 
 import wallet from './reducers/wallet';
 import user from './reducers/user';
@@ -11,7 +12,7 @@ const rootReducer = combineReducers({
 
 const Store = createStore(
   rootReducer,
-  composeWithDevTools(),
+  composeWithDevTools(applyMiddleware(reduxThunk)),
 );
 
 if (window.Cypress) {
