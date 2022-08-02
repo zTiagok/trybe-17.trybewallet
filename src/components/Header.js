@@ -5,12 +5,6 @@ import { connect } from 'react-redux';
 class Header extends Component {
   headerSum = () => {
     const { expenses } = this.props;
-    const lastExpense = (expenses[expenses.length - 1]);
-
-    const { currency, exchangeRates } = lastExpense;
-    const askValue = exchangeRates[currency].ask;
-
-    console.log(currency, exchangeRates, askValue);
 
     const totalSum = expenses.reduce((prev, current) => prev
     + (parseFloat(Number(current.value))
@@ -49,7 +43,7 @@ class Header extends Component {
 
 Header.propTypes = {
   email: propTypes.string.isRequired,
-  expenses: propTypes.oneOfType([propTypes.arrayOf]).isRequired,
+  expenses: propTypes.oneOfType([propTypes.array]).isRequired,
 
 };
 

@@ -4,6 +4,7 @@ export const USER_INFO = 'USER_INFO';
 export const CURRENCIES_INFO = 'CURRENCIES_INFO';
 export const EXCHANGE_INFO = 'EXCHANGE_INFO';
 export const SAVE_TOTAL = 'SAVE_TOTAL';
+export const REMOVE_ITEM = 'REMOVE_ITEM';
 
 export const userInfo = (email, password) => ({
   type: USER_INFO,
@@ -24,6 +25,13 @@ export const exchangeInfo = (info) => ({
   type: EXCHANGE_INFO,
   payload: {
     expenses: info,
+  },
+});
+
+export const deleteItem = (item) => ({
+  type: REMOVE_ITEM,
+  payload: {
+    expenses: item,
   },
 });
 
@@ -53,4 +61,8 @@ export const exchangeInfoThunk = (payload) => async (dispatch) => {
   };
 
   dispatch(exchangeInfo(newPayload));
+};
+
+export const removeItem = (item) => (dispatch) => {
+  dispatch(exchangeInfo(item));
 };
