@@ -33,7 +33,7 @@ class Header extends Component {
         <p data-testid="total-field" id="header-expenses">
           { expenses.length
             ? this.headerSum()
-            : 0 }
+            : (0).toFixed(2) }
         </p>
         <p data-testid="header-currency-field" id="header-currency"> BRL </p>
       </header>

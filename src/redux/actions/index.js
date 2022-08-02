@@ -28,10 +28,10 @@ export const exchangeInfo = (info) => ({
   },
 });
 
-export const deleteItem = (item) => ({
+export const deleteItem = (payload) => ({
   type: REMOVE_ITEM,
   payload: {
-    expenses: item,
+    expenses: payload,
   },
 });
 
@@ -61,8 +61,4 @@ export const exchangeInfoThunk = (payload) => async (dispatch) => {
   };
 
   dispatch(exchangeInfo(newPayload));
-};
-
-export const removeItem = (item) => (dispatch) => {
-  dispatch(exchangeInfo(item));
 };

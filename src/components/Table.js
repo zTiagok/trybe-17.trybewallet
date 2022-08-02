@@ -2,18 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
-import { removeItem as actionRemoveItem } from '../redux/actions';
+import { deleteItem as actionRemoveItem } from '../redux/actions';
 
 class Table extends Component {
   handleButtons = (id, origin) => {
     origin.preventDefault();
     const { expenses, dispatchRemoveItem } = this.props;
     const expensesArray = expenses;
-    const item = document.querySelector(`#cell-${id}`);
 
     if (origin.target.className === 'delete-button') {
       const newExpenses = expensesArray.filter((expense) => expense.id !== id);
-      item.remove();
       dispatchRemoveItem(newExpenses);
     }
 
@@ -111,7 +109,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchRemoveItem: (item) => dispatch(actionRemoveItem(item)),
+  dispatchRemoveItem: (payload) => dispatch(actionRemoveItem(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);
