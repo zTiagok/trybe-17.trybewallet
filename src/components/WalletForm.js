@@ -26,7 +26,8 @@ class WalletForm extends Component {
     this.setState((prevState) => ({ id: prevState.id + 1 }));
 
     const { id, value, currency, method, tag, description } = this.state;
-    const { dispatchSaveInfo, editor, expenses, idToEdit, dispatchExchangeEdit } = this.props;
+    const { dispatchSaveInfo, editor,
+      expenses, idToEdit, dispatchExchangeEdit } = this.props;
 
     const payload = {
       id,
@@ -51,9 +52,6 @@ class WalletForm extends Component {
 
         return expense;
       });
-
-      // expenseToEdit.forEach((expense) => dispatchExchangeEdit(expense));
-
 
       dispatchExchangeEdit(expenseToEdit);
     }
@@ -194,7 +192,13 @@ class WalletForm extends Component {
 WalletForm.propTypes = {
   dispatchGetCurrencies: propTypes.func.isRequired,
   dispatchSaveInfo: propTypes.func.isRequired,
+  dispatchExchangeEdit: propTypes.func.isRequired,
   currencies: propTypes.oneOfType([propTypes.array]).isRequired,
+  editor: propTypes.bool.isRequired,
+  idToEdit: propTypes.number.isRequired,
+  expenses: propTypes.oneOfType([propTypes.array]).isRequired,
+
+  // expenses, idToEdit, dispatchExchangeEdit
 };
 
 const mapStateToProps = (state) => ({
