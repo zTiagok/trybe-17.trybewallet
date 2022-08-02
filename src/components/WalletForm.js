@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
 import { getCurrenciesThunk as actionGetCurrenciesThunk,
-  exchangeInfoThunk as actionExchangeInfoThunk } from '../redux/actions/index';
+  exchangeInfoThunk as actionExchangeInfoThunk,
+  exchangeInfoEdit as actionExchangeInfoEdit } from '../redux/actions/index';
 
 class WalletForm extends Component {
   state = {
@@ -25,7 +26,7 @@ class WalletForm extends Component {
     this.setState((prevState) => ({ id: prevState.id + 1 }));
 
     const { id, value, currency, method, tag, description } = this.state;
-    const { dispatchSaveInfo } = this.props;
+    const { dispatchSaveInfo, editor, expenses, idToEdit, dispatchExchangeEdit } = this.props;
 
     const payload = {
       id,
@@ -36,7 +37,30 @@ class WalletForm extends Component {
       description,
     };
 
-    dispatchSaveInfo(payload);
+    console.log('payload', payload);
+
+    if (editor) {
+      const expenseToEdit = expenses.map((expense) => {
+        if (expense.id === idToEdit) {
+          return {
+            ...payload,
+            id: idToEdit,
+            exchangeRates: expense.exchangeRates,
+          };
+        }
+
+        return expense;
+      });
+
+      // expenseToEdit.forEach((expense) => dispatchExchangeEdit(expense));
+
+
+      dispatchExchangeEdit(expenseToEdit);
+    }
+
+    if (!editor) {
+      dispatchSaveInfo(payload);
+    }
 
     this.setState({ value: '', description: '' });
   }
@@ -69,7 +93,7 @@ class WalletForm extends Component {
   }
 
   render() {
-    const { currencies } = this.props;
+    const { currencies, editor } = this.props;
     const { value, description } = this.state;
 
     return (
@@ -156,7 +180,9 @@ class WalletForm extends Component {
             form="wallet-form"
             onClick={ this.saveInfoButton }
           >
-            Adicionar Despesa
+            { editor
+              ? 'Editar Despesa'
+              : 'Adicionar Despesa' }
           </button>
 
         </form>
@@ -172,12 +198,16 @@ WalletForm.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  expenses: state.wallet.expenses,
   currencies: state.wallet.currencies,
+  idToEdit: state.wallet.idToEdit,
+  editor: state.wallet.editor,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchGetCurrencies: () => dispatch(actionGetCurrenciesThunk()),
   dispatchSaveInfo: (exchangeInfo) => dispatch(actionExchangeInfoThunk(exchangeInfo)),
+  dispatchExchangeEdit: (exchangeEdit) => dispatch(actionExchangeInfoEdit(exchangeEdit)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletForm);

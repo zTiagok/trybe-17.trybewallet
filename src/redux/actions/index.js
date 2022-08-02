@@ -5,6 +5,8 @@ export const CURRENCIES_INFO = 'CURRENCIES_INFO';
 export const EXCHANGE_INFO = 'EXCHANGE_INFO';
 export const SAVE_TOTAL = 'SAVE_TOTAL';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const FORM_EDITOR = 'FORM_EDITOR';
+export const EXCHANGE_INFO_EDIT = 'EXCHANGE_INFO_EDIT';
 
 export const userInfo = (email, password) => ({
   type: USER_INFO,
@@ -28,10 +30,25 @@ export const exchangeInfo = (info) => ({
   },
 });
 
+export const exchangeInfoEdit = (info) => ({
+  type: EXCHANGE_INFO_EDIT,
+  payload: {
+    expenses: info,
+  },
+});
+
 export const deleteItem = (payload) => ({
   type: REMOVE_ITEM,
   payload: {
     expenses: payload,
+  },
+});
+
+export const formEditor = (payload) => ({
+  type: FORM_EDITOR,
+  payload: {
+    editor: true,
+    idToEdit: payload,
   },
 });
 

@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
-import { deleteItem as actionRemoveItem } from '../redux/actions';
+import { deleteItem as actionRemoveItem,
+  formEditor as actionFormEditor } from '../redux/actions';
 
 class Table extends Component {
   handleButtons = (id, origin) => {
     origin.preventDefault();
-    const { expenses, dispatchRemoveItem } = this.props;
+    const { expenses, dispatchRemoveItem, dispatchFormEditor } = this.props;
     const expensesArray = expenses;
 
     if (origin.target.className === 'delete-button') {
@@ -16,7 +17,7 @@ class Table extends Component {
     }
 
     if (origin.target.className === 'edit-button') {
-      console.log(id);
+      dispatchFormEditor(id);
     }
   }
 
@@ -102,6 +103,8 @@ class Table extends Component {
 
 Table.propTypes = {
   expenses: propTypes.oneOfType([propTypes.array]).isRequired,
+  dispatchRemoveItem: propTypes.func.isRequired,
+  dispatchFormEditor: propTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -110,6 +113,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchRemoveItem: (payload) => dispatch(actionRemoveItem(payload)),
+  dispatchFormEditor: (payload) => dispatch(actionFormEditor(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);

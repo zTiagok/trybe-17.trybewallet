@@ -11,13 +11,6 @@ class Header extends Component {
     * (parseFloat(Number(current.exchangeRates[(current.currency)].ask)))), 0).toFixed(2);
 
     return totalSum;
-    // const { expenses } = this.props;
-    // const number = 10;
-    // const { currency, exchangeRates } = expenses[expenses.length - 1];
-    // const selectedCurrency = exchangeRates.filter((exchange) => exchange[currency]);
-    // const selectedCurrency2 = (selectedCurrency[0]);
-    // const { ask } = selectedCurrency2[currency];
-    // return totalSum;
   }
 
   render() {
