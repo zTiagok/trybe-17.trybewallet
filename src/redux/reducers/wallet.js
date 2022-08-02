@@ -1,10 +1,11 @@
-import { CURRENCIES_INFO, EXCHANGE_INFO } from '../actions';
+import { CURRENCIES_INFO, EXCHANGE_INFO, SAVE_TOTAL } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
   expenses: [],
   editor: false,
   idToEdit: 0,
+  total: 0,
 };
 
 const wallet = (state = INITIAL_STATE, action) => {
@@ -19,6 +20,12 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       expenses: [...state.expenses, action.payload.expenses],
+    };
+
+  case SAVE_TOTAL:
+    return {
+      ...state,
+      total: action.payload.total,
     };
 
   default:

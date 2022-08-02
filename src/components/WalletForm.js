@@ -37,6 +37,8 @@ class WalletForm extends Component {
     };
 
     dispatchSaveInfo(payload);
+
+    this.setState({ value: '', description: '' });
   }
 
   handleChanges = ({ target }) => {
@@ -46,7 +48,7 @@ class WalletForm extends Component {
       break;
 
     case 'wallet-form-value':
-      this.setState({ value: Number(target.value) });
+      this.setState({ value: target.value });
       break;
 
     case 'wallet-form-description':
@@ -68,6 +70,7 @@ class WalletForm extends Component {
 
   render() {
     const { currencies } = this.props;
+    const { value, description } = this.state;
 
     return (
       <div id="page-wallet-form">
@@ -102,6 +105,7 @@ class WalletForm extends Component {
               type="number"
               placeholder="100,00"
               id="wallet-form-value"
+              value={ value }
               onChange={ this.handleChanges }
             />
           </label>
@@ -114,6 +118,7 @@ class WalletForm extends Component {
               type="text"
               placeholder="Utilizado para..."
               id="wallet-form-description"
+              value={ description }
               onChange={ this.handleChanges }
             />
           </label>
@@ -141,8 +146,8 @@ class WalletForm extends Component {
               onChange={ this.handleChanges }
             >
               <option type="submit" value="Dinheiro">Dinheiro</option>
-              <option type="submit" value="Cartão de crédito">Cartão de Crédito</option>
-              <option type="submit" value="Cartão de débito">Cartão de Débito</option>
+              <option type="submit" value="Cartão de crédito">Cartão de crédito</option>
+              <option type="submit" value="Cartão de débito">Cartão de débito</option>
             </select>
           </label>
 

@@ -3,6 +3,7 @@ import getCurrencies from '../../api/getCurrencies';
 export const USER_INFO = 'USER_INFO';
 export const CURRENCIES_INFO = 'CURRENCIES_INFO';
 export const EXCHANGE_INFO = 'EXCHANGE_INFO';
+export const SAVE_TOTAL = 'SAVE_TOTAL';
 
 export const userInfo = (email, password) => ({
   type: USER_INFO,
@@ -26,6 +27,13 @@ export const exchangeInfo = (info) => ({
   },
 });
 
+export const saveTotal = (total) => ({
+  type: SAVE_TOTAL,
+  payload: {
+    total,
+  },
+});
+
 export const getCurrenciesThunk = () => async (dispatch) => {
   const data = await getCurrencies();
   delete data.USDT;
@@ -37,29 +45,12 @@ export const getCurrenciesThunk = () => async (dispatch) => {
 };
 
 export const exchangeInfoThunk = (payload) => async (dispatch) => {
-  const data = await getCurrencies();
-  const info = payload;
-  const exchangeArray = [];
-  let exchangeRates = {};
-  delete data.USDT;
-  const dataArray = Object.values(data);
+  const exchangeRates = await getCurrencies();
 
-  dataArray.forEach((response) => {
-    const { ask, code, name } = response;
+  const newPayload = {
+    ...payload,
+    exchangeRates,
+  };
 
-    exchangeRates = {
-      [code]: {
-        code,
-        ask,
-        name,
-      },
-    };
-
-    exchangeArray.push(exchangeRates);
-  });
-  info.exchangeRates = Object.entries(exchangeArray);
-
-  console.log(info);
-
-  dispatch(exchangeInfo(payload));
+  dispatch(exchangeInfo(newPayload));
 };
