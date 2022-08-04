@@ -1,13 +1,171 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Mako&display=swap');
+
+:root {
+--blue: rgb(46, 158, 233);
+--lightblue: rgb(114, 184, 231);
+--grey: rgb(212, 212, 212);
+--darkgrey: rgb(153, 153, 153);
+--greyshadow: rgb(146, 146, 146); 
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Mako', sans-serif;
+  max-height: 975px;
+}
+
+body {
+  background-color: rgb(221, 221, 221);
+  overflow-x: hidden;
+}
+
+/* LOGIN ___________________________________ */
+
+#login-page-content {
+  display: flex;
+  align-items:center;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+#login-page {
+  background-color: rgb(255, 255, 255);
+  width: 500px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:space-evenly;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  box-shadow: 0px 0px 10px var(--greyshadow);
+}
+
+#login-message {
+  margin-top: 50px;
+  flex-grow: 5;
+  font-size: 40px;
+  margin-bottom: 50px;
+}
+
+#login-page hr {
+  position: relative;
+  top: -68px;
+  width: 350px;
+  height: 2px;
+  border: 0px;
+  background-color: var(--lightblue);
+}
+
+#login-form {
+  flex-grow: 4;
+  margin-top: -50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 250px;
+}
+
+#login-form input {
+  padding: 10px;
+  background-color: rgb(212, 212, 212);
+  border-radius: 5px;
+  border: 0px;
+  width: 100%;
+  text-align: center;
+  border: 2px solid white;
+}
+
+#login-form input:not(input:placeholder-shown), #login-form input:focus {
+  border: 2px solid var(--blue);
+  outline: none;
+}
+
+#login-form button:disabled, #login-form button:disabled:hover {
+  background-color: white;
+  color: var(--grey)
+}
+
+#login-form button {
+  width: 50%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 0px;
+  background-color: var(--blue);
+  color: white;
+}
+
+#login-form button:not(disabled):hover {
+  background-color: var(--lightblue);
+}
+
+#login-page nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  padding-top: 20px;
+  margin-bottom: -20px;
+}
+
+#login-page a {
+  text-decoration: none;
+  color: var(--blue)
+}
+
+#login-page a:hover {
+  color: var(--lightblue)
+}
+
+#login-footer {
+  margin-top: 50px;
+  font-size: 11px;
+  text-align: center;
+  color: grey;
+}
+
+#login-page-image {
+  position: relative;
+  left: 340px;
+  margin-left: -400px;
+  width: 800px;
+  height: 980px;
+  border-left: 5px solid var(--grey);
+  box-shadow: -2px 0px 5px var(--greyshadow);
+  background-image: url(https://rmsa.com.br/wp-content/uploads/2021/02/Compensacao-dos-tributos-pagos-por-controladas-e-coligadas-no-exterior.jpeg);
+  background-repeat: no-repeat;
+  background-position-x: 0;
+  background-position-y: bottom;
+  filter: grayscale(50%);
+}
+
+/* HEADER _________________________________ */
+
+header {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 2px solid var(--blue);
+  box-shadow: -0px 0px 5px var(--greyshadow);
+}
+
+#header-username {
+  margin-top: 2px;
+  background-color: var(--grey);
+  border-radius: 10px;
+  border: 2px solid var(--blue);
+  width: 250px;
+  height: 20px;
+  padding: 10px;
+}
+
+#header-icon {
+  background-image: url(./images/user.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
 }

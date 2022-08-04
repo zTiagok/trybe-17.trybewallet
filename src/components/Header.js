@@ -18,17 +18,25 @@ class Header extends Component {
 
     return (
       <header>
-        <p data-testid="email-field" id="header-user">
-          { !email
-            ? 'Sua Conta'
-            : email }
-        </p>
-        <p data-testid="total-field" id="header-expenses">
-          { expenses.length
-            ? this.headerSum()
-            : (0).toFixed(2) }
-        </p>
-        <p data-testid="header-currency-field" id="header-currency"> BRL </p>
+        <div>
+          <div id="header-user">
+            <p data-testid="email-field" id="header-username">
+              { !email
+                ? 'Sua Conta'
+                : email }
+            </p>
+            <div id="header-icon" />
+          </div>
+          <div id="header-coin">
+            <p data-testid="total-field" id="header-expenses">
+              R$
+              { expenses.length
+                ? this.headerSum()
+                : (0).toFixed(2) }
+            </p>
+            <p data-testid="header-currency-field" id="header-currency"> BRL </p>
+          </div>
+        </div>
       </header>
     );
   }

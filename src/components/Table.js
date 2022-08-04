@@ -25,7 +25,15 @@ class Table extends Component {
     const { expenses } = this.props;
 
     return expenses.map((expense) => (
-      <tr key={ expense.id } id={ `cell-${expense.id}` }>
+      <tr
+        key={ expense.id }
+        id={ `cell-${expense.id}` }
+        className={
+          expense.id % 2 === 0
+            ? 'cell-even'
+            : 'cell-odd'
+        }
+      >
         <td>
           { expense.description }
         </td>
@@ -77,7 +85,7 @@ class Table extends Component {
     const { expenses } = this.props;
 
     return (
-      <table>
+      <table id="page-wallet-table">
         <thead>
           <tr>
             <th> Descrição </th>

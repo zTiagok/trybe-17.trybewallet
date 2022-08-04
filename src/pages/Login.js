@@ -49,40 +49,54 @@ class Login extends React.Component {
     }
 
     return (
-      <>
-        <span id="login-message">Login</span>
-        <form id="login-form">
-          <input
-            type="email"
-            data-testid="email-input"
-            id="login-email"
-            placeholder="Email"
-            value={ stateEmail }
-            onChange={ this.inputHandler }
-          />
+      <div id="login-page-content">
+        <div id="login-page">
+          <h3 id="login-message">Acesse sua Conta</h3>
+          <hr />
+          <form id="login-form" autoComplete="off">
+            <input
+              type="email"
+              data-testid="email-input"
+              id="login-email"
+              placeholder="Email"
+              value={ stateEmail }
+              onChange={ this.inputHandler }
+            />
 
-          <input
-            type="password"
-            data-testid="password-input"
-            id="login-password"
-            placeholder="Senha"
-            minLength={ 6 }
-            value={ statePassword }
-            onChange={ this.inputHandler }
-          />
+            <input
+              type="password"
+              data-testid="password-input"
+              id="login-password"
+              placeholder="Senha"
+              minLength={ 6 }
+              value={ statePassword }
+              onChange={ this.inputHandler }
+            />
+            <button
+              type="submit"
+              id="login-submit"
+              form="login-form"
+              data-testid="submit-button"
+              onClick={ this.loginHandler }
+              disabled={ btnDisabled }
+            >
+              Entrar
+            </button>
+          </form>
 
-          <button
-            type="submit"
-            id="login-submit"
-            form="login-form"
-            onClick={ this.loginHandler }
-            disabled={ btnDisabled }
-          >
-            Entrar
-          </button>
-        </form>
-      </>
+          <nav>
+            <a href="oi"> Criar conta. </a>
+            <a href="oi"> Não consigo acessar minha conta. </a>
+          </nav>
 
+          <div id="login-footer">
+            <p id="login-footer-dev"> Desenvolvido por Tiago Braga Costa </p>
+            <p id="login-footer-date"> 04 de Agosto de 2022 </p>
+            <p id="login-footer-version"> v0.0.1 </p>
+          </div>
+        </div>
+        <div id="login-page-image" />
+      </div>
     );
   }
 }

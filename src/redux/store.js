@@ -5,7 +5,7 @@ import reduxThunk from 'redux-thunk';
 import wallet from './reducers/wallet';
 import user from './reducers/user';
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   wallet,
   user,
 });
