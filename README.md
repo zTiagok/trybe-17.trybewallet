@@ -84,8 +84,20 @@
         <td> 17.0.2 </td>
       </tr>
       <tr>
+        <td> React Icons </td>
+        <td> 3.11.0 </td>
+      </tr>
+       <tr>
         <td> Redux </td>
-        <td> 17.0.2 </td>
+        <td> 4.0.5 </td>
+      </tr>
+      <tr>
+        <td> Redux Thunk </td>
+        <td> 2.3.0 </td>
+      </tr>
+       <tr>
+        <td> React Redux </td>
+        <td> 7.2.1 </td>
       </tr>
     </tbody>
   </table>
