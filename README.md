@@ -76,7 +76,7 @@
     </thead>
     <tbody>
       <tr>
-        <td> ReactJS </td>
+        <td> React JS </td>
         <td> 17.0.2 </td>
       </tr>
       <tr>
